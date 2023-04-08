@@ -21,6 +21,9 @@
 
     --light:600;
     --bold:700;
+
+    --mobile: 375px;
+    --desktop: 1366px;
 }
 
 html{
