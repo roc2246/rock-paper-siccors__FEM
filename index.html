@@ -1,37 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    >
+    <link rel="stylesheet" href="style.css" >
 
-  Score
-  Rules
+    <title>Frontend Mentor | Rock, Paper, Scissors</title>
+  </head>
+  <body>
+    <header class="top">
+      <div class="top__logo-box">
+        <img
+          src="images/logo.svg"
+          alt="logo"
+          class="top__logo-box--regular-logo"
+        >
+        <img
+          src="images/logo-bonus.svg"
+          alt="bonus-logo"
+          class="top__logo-box--bonus-logo"
+        >
+      </div>
+      <div class="top__score">
+        <h4 class="top__score--heading">Score</h4>
+        <h1 class="top__score--score">&nbsp;</h1>
+      </div>
+    </header>
 
-  You Picked
-  The House Picked
+    <main class="game">
 
-  You Win
-  You Lose
+      <div class="options">
+        <div class="options__paper-box">
+          <img src="images/icon-paper.svg" alt="paper" >
+        </div>
+        <div class="options__sissors-box">
+          <img src="images/icon-scissors.svg" alt="siccors" >
+        </div>
+        <div class="options__rock-box">
+          <img src="images/icon-rock.svg" alt="rock" >
+        </div>
+        <div class="options__lizard-box">
+          <img src="images/icon-lizard.svg" alt="lizard" >
+        </div>
+        <div class="options__spock-box">
+          <img src="images/icon-spock.svg" alt="spock" >
+        </div>
+      </div>
 
-  Play Again
+      <div class="pick">
+        <div class="pick__your-pick">
+          <h4 class="pick__your-pic--heading">YOU PICKED</h4>
+          <div class="pick__your-pic--img-box">&nbsp;</div>
+        </div>
+        <div class="pick__outcome">
+          <div class="pick__outcome">
+            <h2 class="pick__outcome--heading">&nbsp;</h2>
+            <button class="pick__outcome--play-again">PLAY AGAIN</button>
+          </div>
+        </div>
+        <div class="pick__house-pick">
+          <h4 class="pick__house-pic--heading">THE HOUSE PICKED</h4>
+          <div class="pick__house-pic--img-box">&nbsp;</div>
+        </div>
+      </div>
+      
+    </main>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    <footer class="bottom">
+      <button class="rules">RULES</button>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>
