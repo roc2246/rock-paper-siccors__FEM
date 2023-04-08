@@ -43,22 +43,41 @@ html {
   padding: 1rem;
 }
 
+.top__logo-box{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.top__logo-box--regular-logo,
+.top__logo-box--bonus-logo
+{
+    width: 6rem;
+    height: auto;
+}
+
 .top__logo-box--bonus-logo {
   display: none;
 }
 
 .top__score {
   border: solid;
-  padding: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: .75rem;
+  padding-right: .75rem;
+  width: 4rem;
+  height: auto;
 }
 
 .top__score--heading {
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
+  text-align: center;
 }
 
 .top__score--score {
   margin: 0;
+  text-align: center;
 }
 
 .game {
@@ -121,4 +140,15 @@ html {
 
 .rules{
     float: right;
+    height: 2rem;
+    width: 6rem;
+}
+
+@media (max-width: 375px) {
+    .bottom{
+        display: flex;
+        justify-content: center;
+    }
+    
+  
 }
