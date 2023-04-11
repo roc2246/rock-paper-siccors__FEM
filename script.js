@@ -4,6 +4,11 @@ let houseOptions = 3;
 let userChoice;
 let houseChoice;
 
+const bonusColLayout = "repeat(9, auto)";
+const bonusRowLayout = `var(--choice-border-width) repeat(3, auto) 
+var(--choice-border-width) repeat(3, auto) var(--choice-border-width) 
+2rem var(--choice-border-width) repeat(3,auto) var(--choice-border-width)`;
+
 const logoContainer = document.getElementsByClassName("top__logo-box")[0];
 const regularLogo = document.getElementsByClassName(
   "top__logo-box--regular-logo"
@@ -39,11 +44,19 @@ const playAgain = document.getElementsByClassName(
   "pick__outcome--play-again"
 )[0];
 
-choices[3].remove();
-choices[3].remove();
-
 function getNo(max) {
   return Math.floor(Math.random() * max);
+}
+
+function getResults (pick) {
+  options.style.display = "none";
+  pickContainer.style.display = "flex";
+
+  userChoice = pick;
+  houseChoice = housePicks[getNo(houseOptions)];
+
+  yourPick.appendChild(userChoice);
+  housePickContainer.appendChild(houseChoice);
 }
 
 function createOption(choice) {
@@ -57,14 +70,7 @@ function createOption(choice) {
 
   container.appendChild(image);
   container.onclick = () => {
-    options.style.display = "none";
-    pickContainer.style.display = "flex";
-
-    userChoice = container;
-    houseChoice = housePicks[getNo(3)];
-
-    yourPick.appendChild(userChoice);
-    housePickContainer.appendChild(houseChoice);
+   getResults(container)
   };
 
   options.appendChild(container);
@@ -95,14 +101,10 @@ function setConnector(direction, col, row, deg) {
     line.style.display = "block";
   }
 
-  if (mode === "original" && direction === "bottom-right-top-left") {
-    line.style.display = "none";
-    col = null;
-    row = null;
-    deg = null;
-    line.style.transform = "";
-  }
-  if (mode === "original" && direction === "bottom-left-top-right") {
+  if (
+    (mode === "original" && direction === "bottom-right-top-left") ||
+    (mode === "original" && direction === "bottom-left-top-right")
+  ) {
     line.style.display = "none";
     col = null;
     row = null;
@@ -111,26 +113,8 @@ function setConnector(direction, col, row, deg) {
   }
 }
 
-function setGameType(type) {
+function setLayout(type) {
   if (type === "bonus") {
-    mode = "bonus";
-    houseOptions = 5;
-    options.style.gridTemplateColumns = "repeat(9, auto)";
-    options.style.gridTemplateRows +=
-      " var(--choice-border-width) repeat(3, auto) var(--choice-border-width)";
-    options.style.gridTemplateRows +=
-      " repeat(3, auto) var(--choice-border-width) 2rem var(--choice-border-width) repeat(3,auto) var(--choice-border-width)";
-
-    createOption("lizard");
-    createOption("spock");
-    choices[3].style.display = "flex";
-    choices[4].style.display = "flex";
-    housePicks = [
-      ...housePicks,
-      choices[3].cloneNode(true),
-      choices[4].cloneNode(true),
-    ];
-
     setChoiceLayout(0, "7/10", "5/10");
     setChoiceLayout(1, "4/7", "1/6");
     setChoiceLayout(2, "6/9", "11/16");
@@ -142,13 +126,7 @@ function setGameType(type) {
     setConnector("top-right-bottom-left", "6/10", "10", "110");
     setConnector("bottom-right-top-left", "5/10", "5", "40");
     setConnector("bottom-left-top-right", "1/6", "5", "140");
-  
   } else if (type === "original") {
-    mode = "original";
-    houseOptions = 3;
-    options.style.gridTemplateColumns = " ";
-    options.style.gridTemplateRows = "";
-
     setChoiceLayout(0, "1/4", "1/2");
     setChoiceLayout(1, "5/8", "1/2");
     setChoiceLayout(2, "3/6", "3/4");
@@ -158,12 +136,40 @@ function setGameType(type) {
     setConnector("top-right-bottom-left", "4/7", "1/4", "120");
     setConnector("bottom-right-top-left");
     setConnector("bottom-left-top-right");
+  }
+}
+
+function setGrid(col, row) {
+  options.style.gridTemplateColumns = col;
+  options.style.gridTemplateRows = row;
+}
+
+function setGameType(type) {
+  if (type === "bonus") {
+    mode = "bonus";
+    houseOptions = 5;
+    setGrid(bonusColLayout, bonusRowLayout);
+    createOption("lizard");
+    createOption("spock");
+    choices[3].style.display = "flex";
+    choices[4].style.display = "flex";
+    housePicks = [
+      ...housePicks,
+      choices[3].cloneNode(true),
+      choices[4].cloneNode(true),
+    ];
+
+    setLayout("bonus");
+  } else if (type === "original") {
+    mode = "original";
+    houseOptions = 3;
+    setGrid("", "");
+    setLayout("original");
 
     choices[3].remove();
     choices[3].remove();
 
-    housePicks.splice(3, 2)
-
+    housePicks.splice(3, 2);
   }
 }
 
@@ -197,14 +203,7 @@ window.onclick = (event) => {
 
 Object.keys(choices).forEach((choice) => {
   choices[choice].onclick = () => {
-    options.style.display = "none";
-    pickContainer.style.display = "flex";
-
-    userChoice = choices[choice];
-    houseChoice = housePicks[getNo(houseOptions)];
-
-    yourPick.appendChild(userChoice);
-    housePickContainer.appendChild(houseChoice);
+    getResults(choices[choice])
   };
 });
 
@@ -218,10 +217,9 @@ playAgain.onclick = () => {
     choices[0].remove();
 
     createOption("paper");
-    createOption("rock");
     createOption("scissors");
+    createOption("rock");
   } else if (houseOptions === 5) {
-    console.log(houseOptions);
     choices[0].remove();
     choices[0].remove();
     choices[0].remove();
@@ -229,25 +227,15 @@ playAgain.onclick = () => {
     choices[0].remove();
 
     createOption("paper");
-    createOption("rock");
     createOption("scissors");
+    createOption("rock");
     createOption("lizard");
     createOption("spock");
-    setChoiceLayout(0, "7/10", "5/10");
-    setChoiceLayout(1, "4/7", "1/6");
-    setChoiceLayout(2, "6/9", "11/16");
-    setChoiceLayout(3, "2/6", "11/16");
-    setChoiceLayout(4, "1/4", "5/10");
 
-    setConnector("left-right", "2/9", "13/14");
-    setConnector("top-left-bottom-right", "1/5", "10", "70");
-    setConnector("top-right-bottom-left", "6/10", "10", "110");
-    setConnector("bottom-right-top-left", "5/10", "5", "40");
-    setConnector("bottom-left-top-right", "1/6", "5", "140");
+    setLayout("bonus");
 
     choices[3].style.display = "flex";
     choices[4].style.display = "flex";
-    console.log(choices[3].style.display);
   }
 
   userChoice = undefined;
