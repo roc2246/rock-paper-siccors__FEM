@@ -28,12 +28,6 @@ const closeRulesBtn = document.getElementsByClassName(
 const options = document.getElementsByClassName("options")[0];
 const choices = document.getElementsByClassName("choice-box");
 
-const paper = choices[0];
-const scissors = choices[1];
-const rock = choices[2];
-const lizard = choices[3];
-const spock = choices[4];
-
 const pickContainer = document.getElementsByClassName("pick")[0];
 const yourPick = document.getElementsByClassName(
   "pick__your-pic--container"
@@ -72,20 +66,53 @@ function checkPick(userPick, housePick) {
 }
 
 function rules() {
+  const paper = choices[0];
+  const scissors = choices[1];
+  const rock = choices[2];
+  const lizard = choices[3];
+  const spock = choices[4];
   if (userChoice.innerHTML === houseChoice.innerHTML) {
     resultMssg = `YOU TIED`;
   } else if (checkPick(rock, paper)) {
     resultMssg = `YOU LOSE`;
   } else if (checkPick(rock, scissors)) {
     resultMssg = `YOU WIN`;
+  } else if (checkPick(rock, lizard)) {
+    resultMssg = `YOU WIN`;
+  } else if (checkPick(rock, spock)) {
+    resultMssg = `YOU LOSE`;
   } else if (checkPick(paper, rock)) {
     resultMssg = `YOU WIN`;
   } else if (checkPick(paper, scissors)) {
     resultMssg = `YOU LOSE`;
+  } else if (checkPick(paper, lizard)) {
+    resultMssg = `YOU LOSE`;
+  } else if (checkPick(paper, spock)) {
+    resultMssg = `YOU WIN`;
   } else if (checkPick(scissors, rock)) {
     resultMssg = `YOU LOSE`;
   } else if (checkPick(scissors, paper)) {
     resultMssg = `YOU WIN`;
+  } else if (checkPick(scissors, lizard)) {
+    resultMssg = `YOU WIN`;
+  } else if (checkPick(scissors, spock)) {
+    resultMssg = `YOU LOSE`;
+  } else if (checkPick(lizard, rock)) {
+    resultMssg = `YOU LOSE`;
+  } else if (checkPick(lizard, paper)) {
+    resultMssg = `YOU WIN`;
+  } else if (checkPick(lizard, scissors)) {
+    resultMssg = `YOU LOSE`;
+  } else if (checkPick(lizard, spock)) {
+    resultMssg = `YOU WIN`;
+  } else if (checkPick(spock, rock)) {
+    resultMssg = `YOU WIN`;
+  } else if (checkPick(spock, paper)) {
+    resultMssg = `YOU LOSE`;
+  } else if (checkPick(spock, scissors)) {
+    resultMssg = `YOU WIN`;
+  } else if (checkPick(spock, lizard)) {
+    resultMssg = `YOU LOSE`;
   }
 }
 
