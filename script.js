@@ -29,7 +29,7 @@ const housePickContainer = document.getElementsByClassName(
   "pick__house-pic--container"
 )[0];
 
-const housePicks = [
+let housePicks = [
   choices[0].cloneNode(true),
   choices[1].cloneNode(true),
   choices[2].cloneNode(true),
@@ -123,9 +123,13 @@ function setGameType(type) {
 
     createOption("lizard");
     createOption("spock");
-
     choices[3].style.display = "flex";
     choices[4].style.display = "flex";
+    housePicks = [
+      ...housePicks,
+      choices[3].cloneNode(true),
+      choices[4].cloneNode(true),
+    ];
 
     setChoiceLayout(0, "7/10", "5/10");
     setChoiceLayout(1, "4/7", "1/6");
@@ -138,6 +142,7 @@ function setGameType(type) {
     setConnector("top-right-bottom-left", "6/10", "10", "110");
     setConnector("bottom-right-top-left", "5/10", "5", "40");
     setConnector("bottom-left-top-right", "1/6", "5", "140");
+  
   } else if (type === "original") {
     mode = "original";
     houseOptions = 3;
@@ -156,6 +161,9 @@ function setGameType(type) {
 
     choices[3].remove();
     choices[3].remove();
+
+    housePicks.splice(3, 2)
+
   }
 }
 
@@ -213,7 +221,7 @@ playAgain.onclick = () => {
     createOption("rock");
     createOption("scissors");
   } else if (houseOptions === 5) {
-  console.log(houseOptions)
+    console.log(houseOptions);
     choices[0].remove();
     choices[0].remove();
     choices[0].remove();
@@ -237,9 +245,9 @@ playAgain.onclick = () => {
     setConnector("bottom-right-top-left", "5/10", "5", "40");
     setConnector("bottom-left-top-right", "1/6", "5", "140");
 
-    choices[3].style.display = "flex"
-    choices[4].style.display = "flex"
-    console.log(choices[3].style.display)
+    choices[3].style.display = "flex";
+    choices[4].style.display = "flex";
+    console.log(choices[3].style.display);
   }
 
   userChoice = undefined;
