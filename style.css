@@ -94,12 +94,13 @@ html {
 
   /* Bonus Setting */
   grid-template-columns: repeat(9, auto);
-  grid-template-rows: var(--choice-border-width) repeat(3, auto) var(
-      --choice-border-width
-    ) repeat(3, auto) var(--choice-border-width) 2rem var(--choice-border-width) repeat(
+  grid-template-rows:
+    var(--choice-border-width) repeat(3, auto) var(--choice-border-width)
+    repeat(3, auto) var(--choice-border-width) 2rem var(--choice-border-width) repeat(
       3,
       auto
-    ) var(--choice-border-width);
+    )
+    var(--choice-border-width);
 }
 
 .choice-box {
@@ -114,6 +115,17 @@ html {
   justify-content: center;
   align-items: center;
   background-color: white;
+}
+
+@media (max-width: 375px) {
+  .choice-box {
+    height: 5rem;
+    width: 5rem;
+  }
+  .choice-box > img {
+    width: 2rem;
+    height: auto;
+  }
 }
 
 .options__line {
@@ -187,7 +199,7 @@ html {
   /* Bonus Settings */
   grid-column: 1/5;
   grid-row: 10;
-  transform: rotate(70deg); 
+  transform: rotate(70deg);
 }
 
 .options__line--top-right-bottom-left {
@@ -198,7 +210,7 @@ html {
   /* Bonus Settings */
   grid-column: 6/10;
   grid-row: 10;
-  transform: rotate(110deg); 
+  transform: rotate(110deg);
 }
 
 .options__line--bottom-right-top-left {
@@ -207,7 +219,7 @@ html {
   /* Bonus Settings */
   grid-column: 5/10;
   grid-row: 5;
-  transform: rotate(40deg); 
+  transform: rotate(40deg);
 }
 
 .options__line--bottom-left-top-right {
@@ -216,8 +228,7 @@ html {
   /* Bonus Settings */
   grid-column: 1/6;
   grid-row: 5;
-  transform: rotate(140deg); 
-
+  transform: rotate(140deg);
 }
 
 .pick {
