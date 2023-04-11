@@ -123,6 +123,9 @@ function getResults(pick) {
   userChoice = pick;
   houseChoice = housePicks[getNo(houseOptions)];
 
+  userChoice.onclick = () => {};
+  houseChoice.onclick = () => {};
+
   yourPick.appendChild(userChoice);
   housePickContainer.appendChild(houseChoice);
   rules();
