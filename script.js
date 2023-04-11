@@ -1,5 +1,11 @@
+let mode = "original"
+
 let userChoice;
 let houseChoice;
+
+const logoContainer = document.getElementsByClassName("top__logo-box")[0]
+const regularLogo = document.getElementsByClassName("top__logo-box--regular-logo")[0]
+const bonusLogo = document.getElementsByClassName("top__logo-box--bonus-logo")[0]
 
 const displayRules = document.getElementsByClassName("rules-btn")[0];
 const rulesModal = document.getElementsByClassName("rules-modal")[0];
@@ -9,9 +15,6 @@ const closeRulesBtn = document.getElementsByClassName(
 
 const options = document.getElementsByClassName("options")[0];
 const choices = document.getElementsByClassName("choice-box");
-// const paper = document.getElementsByClassName("options__paper-box")[0]
-// const siccors = document.getElementsByClassName("options__siccors-box")[0]
-// const rock = document.getElementsByClassName("options__rock-box")[0]
 
 const pickContainer = document.getElementsByClassName("pick")[0];
 const yourPick = document.getElementsByClassName(
@@ -41,6 +44,9 @@ function createOption(choice) {
   const image = document.createElement("img");
 
   image.src = `images/icon-${choice}.svg`;
+  image.alt = `${choice}`;
+  image.className = `options__${choice}-box--img`;
+
   container.appendChild(image);
   container.onclick = () => {
     options.style.display = "none";
@@ -54,6 +60,58 @@ function createOption(choice) {
   };
 
   options.appendChild(container);
+}
+
+function setChoiceLayout(no, col, row){
+choices[no].style.gridColumn = col
+choices[no].style.gridRow = row
+}
+
+function setConnector(direction, col, row, deg) {
+  const line = document.getElementsByClassName(`options__line--${direction}`)[0]
+  line.style.gridColumn = col
+  line.style.gridRow = row
+
+  if(direction !== "left-right"){
+    line.style.transform = `rotate(${deg}deg)`
+  } else {
+    deg = undefined
+  }
+
+  if (direction === "bottom-right-top-left" || direction === "bottom-left-top-right") {
+    line.style.display = "block"
+  }
+}
+
+function setGameType () {
+options.style.gridTemplateColumns = "repeat(9, auto)"
+options.style.gridTemplateRows += " var(--choice-border-width) repeat(3, auto) var(--choice-border-width)"
+options.style.gridTemplateRows += " repeat(3, auto) var(--choice-border-width) 2rem var(--choice-border-width) repeat(3,auto) var(--choice-border-width)"
+choices[3].style.display = "flex"
+choices[4].style.display = "flex"
+
+setChoiceLayout(0, "7/10", "5/10")
+setChoiceLayout(1, "4/7", "1/6")
+setChoiceLayout(2, "6/9", "11/16")
+setChoiceLayout(3, "2/6", "11/16")
+setChoiceLayout(4, "1/4", "5/10")
+
+setConnector("left-right", "2/9", "13/14")
+setConnector("top-left-bottom-right", "1/5", "10", "70")
+setConnector("top-right-bottom-left", "6/10", "10", "110")
+setConnector("bottom-right-top-left", "5/10", "5", "40")
+setConnector("bottom-left-top-right", "1/6", "5", "140")
+}
+
+logoContainer.onclick = () => {
+  if(bonusLogo.style.display === 'none' || bonusLogo.style.display === ""){
+    regularLogo.style.display = "none"
+    bonusLogo.style.display = "inline"
+    setGameType()
+  } else {
+    regularLogo.style.display = "inline"
+    bonusLogo.style.display = "none"
+  }
 }
 
 displayRules.onclick = () => {
@@ -72,8 +130,8 @@ window.onclick = (event) => {
   }
 };
 
-choices[3].remove();
-choices[3].remove();
+// choices[3].remove();
+// choices[3].remove();
 
 Object.keys(choices).forEach((choice) => {
   choices[choice].onclick = () => {
@@ -103,6 +161,6 @@ playAgain.onclick = () => {
   userChoice = undefined;
   houseChoice = undefined;
 
-  yourPick.innerHTML = '' 
-  housePickContainer.innerHTML = ''
+  yourPick.innerHTML = "";
+  housePickContainer.innerHTML = "";
 };

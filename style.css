@@ -46,6 +46,7 @@ html {
 }
 
 .top__logo-box {
+  cursor: pointer;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
@@ -188,8 +189,8 @@ html {
   grid-column: 1/8;
   grid-row: 1/2;
   /* Bonus Settings */
-  /* grid-row: 13/14;
-  grid-column: 2/9; */
+  /* grid-column: 2/9;
+  grid-row: 13/14; */
 }
 
 .options__line--top-left-bottom-right {
