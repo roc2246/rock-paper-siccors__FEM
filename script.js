@@ -1,5 +1,7 @@
 let mode = "original";
 let houseOptions = 3;
+let resultMssg;
+let score;
 
 let userChoice;
 let houseChoice;
@@ -26,6 +28,12 @@ const closeRulesBtn = document.getElementsByClassName(
 const options = document.getElementsByClassName("options")[0];
 const choices = document.getElementsByClassName("choice-box");
 
+const paper = choices[0];
+const scissors = choices[1];
+const rock = choices[2];
+const lizard = choices[3];
+const spock = choices[4];
+
 const pickContainer = document.getElementsByClassName("pick")[0];
 const yourPick = document.getElementsByClassName(
   "pick__your-pic--container"
@@ -40,6 +48,8 @@ let housePicks = [
   choices[2].cloneNode(true),
 ];
 
+const results = document.getElementsByClassName("pick__outcome--heading")[0];
+
 const playAgain = document.getElementsByClassName(
   "pick__outcome--play-again"
 )[0];
@@ -48,7 +58,38 @@ function getNo(max) {
   return Math.floor(Math.random() * max);
 }
 
-function getResults (pick) {
+function result(user, house, result) {
+  if (userChoice === user && houseChoice === house) {
+    console.log(`YOU ${result.toUpperCase()}`);
+  }
+}
+
+function checkPick(userPick, housePick) {
+  return (
+    userChoice.innerHTML === userPick.innerHTML &&
+    houseChoice.innerHTML === housePick.innerHTML
+  );
+}
+
+function rules() {
+  if (userChoice.innerHTML === houseChoice.innerHTML) {
+    resultMssg = `YOU TIED`;
+  } else if (checkPick(rock, paper)) {
+    resultMssg = `YOU LOSE`;
+  } else if (checkPick(rock, scissors)) {
+    resultMssg = `YOU WIN`;
+  } else if (checkPick(paper, rock)) {
+    resultMssg = `YOU WIN`;
+  } else if (checkPick(paper, scissors)) {
+    resultMssg = `YOU LOSE`;
+  } else if (checkPick(scissors, rock)) {
+    resultMssg = `YOU LOSE`;
+  } else if (checkPick(scissors, paper)) {
+    resultMssg = `YOU WIN`;
+  }
+}
+
+function getResults(pick) {
   options.style.display = "none";
   pickContainer.style.display = "flex";
 
@@ -57,20 +98,22 @@ function getResults (pick) {
 
   yourPick.appendChild(userChoice);
   housePickContainer.appendChild(houseChoice);
+  rules();
+  results.innerHTML = resultMssg;
 }
 
 function createOption(choice) {
   const container = document.createElement("div");
   container.className = `choice-box options__${choice}-box`;
-  const image = document.createElement("img");
 
+  const image = document.createElement("img");
   image.src = `images/icon-${choice}.svg`;
   image.alt = `${choice}`;
   image.className = `options__${choice}-box--img`;
 
   container.appendChild(image);
   container.onclick = () => {
-   getResults(container)
+    getResults(container);
   };
 
   options.appendChild(container);
@@ -203,11 +246,12 @@ window.onclick = (event) => {
 
 Object.keys(choices).forEach((choice) => {
   choices[choice].onclick = () => {
-    getResults(choices[choice])
+    getResults(choices[choice]);
   };
 });
 
 playAgain.onclick = () => {
+  resultMssg = " ";
   options.style.display = "grid";
   pickContainer.style.display = "none";
 
