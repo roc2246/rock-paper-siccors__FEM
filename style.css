@@ -239,7 +239,46 @@ html {
   width: 100%;
 }
 
-.rules {
+.rules-modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.rules-modal__container{
+  background-color: white;
+  border-radius: .5rem;
+  padding: 1rem;
+}
+
+.rules-modal__container--heading{
+  margin-top: 0;
+  font-weight: 900;
+}
+
+.rules-modal__container--image{
+  display: none;
+}
+
+/* .rules-modal__container--bonus-image{
+  display: none;
+} */
+
+.rules-modal__container--close{
+  cursor: pointer;
+}
+
+.rules-btn {
+  cursor: pointer;
   float: right;
   height: 2rem;
   width: 6rem;
