@@ -1,7 +1,8 @@
 let mode = "original";
 let houseOptions = 3;
 let resultMssg;
-let score;
+
+let score = 0;
 
 let userChoice;
 let houseChoice;
@@ -18,6 +19,8 @@ const regularLogo = document.getElementsByClassName(
 const bonusLogo = document.getElementsByClassName(
   "top__logo-box--bonus-logo"
 )[0];
+
+const scoreContainer = document.getElementsByClassName("top__score--score")[0];
 
 const displayRules = document.getElementsByClassName("rules-btn")[0];
 const rulesModal = document.getElementsByClassName("rules-modal")[0];
@@ -50,12 +53,6 @@ const playAgain = document.getElementsByClassName(
 
 function getNo(max) {
   return Math.floor(Math.random() * max);
-}
-
-function result(user, house, result) {
-  if (userChoice === user && houseChoice === house) {
-    console.log(`YOU ${result.toUpperCase()}`);
-  }
 }
 
 function checkPick(userPick, housePick) {
@@ -116,6 +113,16 @@ function rules() {
   }
 }
 
+function setScore () {
+    if (resultMssg === "YOU WIN") {
+    score += 1;
+  } else if (resultMssg === "YOU LOSE") {
+    score -= 1;
+  }
+  results.innerHTML = resultMssg;
+  scoreContainer.innerHTML = score;
+}
+
 function getResults(pick) {
   options.style.display = "none";
   pickContainer.style.display = "flex";
@@ -129,7 +136,7 @@ function getResults(pick) {
   yourPick.appendChild(userChoice);
   housePickContainer.appendChild(houseChoice);
   rules();
-  results.innerHTML = resultMssg;
+  setScore()
 }
 
 function createOption(choice) {
