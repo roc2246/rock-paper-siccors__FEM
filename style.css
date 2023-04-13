@@ -277,7 +277,8 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width: 100%;
+  max-width: 95vw;
+  margin-top: 5rem;
 }
 
 .rules-modal {
