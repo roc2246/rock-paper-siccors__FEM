@@ -320,8 +320,16 @@ body{
 
 .rules-btn {
   cursor: pointer;
-  height: 2rem;
-  width: 6rem;
+  height: 2.75rem;
+  width: 8rem;
+
+  background-color: transparent;
+  border: solid;
+  color: white;
+  border-radius: .5rem;
+  border-width: .05rem;
+
+  font-size: 1rem;
 }
 
 @media (max-width: 375px) {
