@@ -125,7 +125,7 @@ function setScore () {
 
 function getResults(pick) {
   options.style.display = "none";
-  pickContainer.style.display = "flex";
+  pickContainer.style.display = "grid";
 
   userChoice = pick;
   houseChoice = housePicks[getNo(houseOptions)];

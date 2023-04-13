@@ -46,6 +46,13 @@ body{
   background-size: cover;
 }
 
+button{
+  cursor: pointer;
+  height: 2.75rem;
+  width: 8rem;
+  border-radius: .5rem;
+}
+
 .top {
   display: flex;
   flex-direction: row;
@@ -288,6 +295,69 @@ body{
 
 .pick {
   display: none;
+  justify-content: center;
+  gap: 2rem;
+  grid-template-columns: repeat(3, auto);
+
+}
+
+@media (max-width: 375px) {
+  .pick {
+    display: none;
+    justify-content: center;
+    gap: 2rem;
+    grid-template-columns: repeat(2, auto);
+  
+  }
+}
+
+.pick__your-pic--heading,
+.pick__house-pic--heading,
+.pick__outcome--heading{
+text-align: center;
+color: white;
+}
+
+@media (max-width: 375px) {
+  .pick__your-pick{
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+}
+
+@media (max-width: 375px) {
+  .pick__house-pick{
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+}
+
+
+.pick__outcome{
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 8rem;
+}
+
+@media (max-width: 375px) {
+  .pick__outcome{
+    grid-column: 1/3;
+    grid-row: 2/3;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.pick__outcome--heading{
+  margin-bottom: .25rem;
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.pick__outcome--play-again{
+font-weight: bolder;
+color: var(--dark-text);
+border: none;
 }
 
 .bottom {
@@ -337,14 +407,9 @@ body{
 }
 
 .rules-btn {
-  cursor: pointer;
-  height: 2.75rem;
-  width: 8rem;
-
   background-color: transparent;
   border: solid;
   color: white;
-  border-radius: .5rem;
   border-width: .05rem;
 
   font-size: 1rem;
