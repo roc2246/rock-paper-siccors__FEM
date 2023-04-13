@@ -36,8 +36,8 @@ html {
 }
 
 body{
-  background: radial-gradient(circle at center top,  var(--radial-gradient-1), var(--radial-gradient-2));
-  background-repeat: no-repeat;
+  background: radial-gradient(circle at center top,  var(--radial-gradient-1), var(--radial-gradient-2)) no-repeat center center fixed; ;
+  background-size: cover;
 }
 
 .top {
@@ -100,6 +100,7 @@ body{
 .options {
   justify-content: center;
   display: grid;
+  margin-top: 4rem;
 
   /* Bonus Setting */
   /* grid-template-columns: repeat(9, auto);
@@ -273,6 +274,9 @@ body{
 }
 
 .bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   width: 100%;
 }
 
@@ -316,14 +320,12 @@ body{
 
 .rules-btn {
   cursor: pointer;
-  float: right;
   height: 2rem;
   width: 6rem;
 }
 
 @media (max-width: 375px) {
   .bottom {
-    display: flex;
     justify-content: center;
   }
 }
