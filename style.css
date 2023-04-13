@@ -30,6 +30,12 @@
   --choice-border-width: 1.5rem;
 }
 
+@media (max-width: 375px) {
+  :root{
+  --choice-border-width: 0.75rem;
+  }
+}
+
 html {
   font-size: 16px;
   font-family: "Barlow Semi Condensed", sans-serif;
