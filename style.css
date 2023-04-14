@@ -348,10 +348,20 @@ button {
   margin-right: auto;
 }
 
+/* .pick__house-pick--container{
+  border-radius: 50%;
+  border-color: white;
+  height: 10rem;
+  width: 10rem;
+  color: white;
+} */
+
+
 .pick__outcome {
   margin-top: auto;
   margin-bottom: auto;
   width: 8rem;
+  display: none;
 }
 
 @media (max-width: 375px) {

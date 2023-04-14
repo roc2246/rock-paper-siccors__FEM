@@ -7,6 +7,9 @@ let score = 0;
 let userChoice;
 let houseChoice;
 
+const revealHousePick = 1000;
+const revealResult = 1500;
+
 const bonusColLayout = "repeat(9, auto)";
 const bonusRowLayout = `var(--choice-border-width) repeat(3, auto) 
 var(--choice-border-width) repeat(3, auto) var(--choice-border-width) 
@@ -45,8 +48,8 @@ let housePicks = [
   choices[2].cloneNode(true),
 ];
 
+const resultsContainer = document.getElementsByClassName("pick__outcome")[0];
 const results = document.getElementsByClassName("pick__outcome--heading")[0];
-
 const playAgain = document.getElementsByClassName(
   "pick__outcome--play-again"
 )[0];
@@ -113,8 +116,8 @@ function rules() {
   }
 }
 
-function setScore () {
-    if (resultMssg === "YOU WIN") {
+function setScore() {
+  if (resultMssg === "YOU WIN") {
     score += 1;
   } else if (resultMssg === "YOU LOSE") {
     score -= 1;
@@ -134,9 +137,16 @@ function getResults(pick) {
   houseChoice.onclick = () => {};
 
   yourPick.appendChild(userChoice);
-  housePickContainer.appendChild(houseChoice);
-  rules();
-  setScore()
+
+  setTimeout(() => {
+    housePickContainer.appendChild(houseChoice);
+  }, revealHousePick);
+
+  setTimeout(() => {
+    resultsContainer.style.display = "block";
+    rules();
+    setScore();
+  }, revealResult);
 }
 
 function createOption(choice) {
@@ -291,6 +301,7 @@ playAgain.onclick = () => {
   resultMssg = " ";
   options.style.display = "grid";
   pickContainer.style.display = "none";
+  resultsContainer.style.display = "none";
 
   if (houseOptions === 3) {
     choices[0].remove();
