@@ -36,10 +36,10 @@ const choices = document.getElementsByClassName("choice-box");
 
 const pickContainer = document.getElementsByClassName("pick")[0];
 const yourPick = document.getElementsByClassName(
-  "pick__your-pic--container"
+  "pick__your-pick--container"
 )[0];
 const housePickContainer = document.getElementsByClassName(
-  "pick__house-pic--container"
+  "pick__house-pick--container"
 )[0];
 
 let housePicks = [
@@ -135,6 +135,9 @@ function getResults(pick) {
 
   userChoice.onclick = () => {};
   houseChoice.onclick = () => {};
+
+  yourPick.innerHTML = ""
+  housePickContainer.innerHTML = ""
 
   yourPick.appendChild(userChoice);
 
@@ -333,6 +336,6 @@ playAgain.onclick = () => {
   userChoice = undefined;
   houseChoice = undefined;
 
-  yourPick.innerHTML = "";
-  housePickContainer.innerHTML = "";
+  yourPick.innerHTML = "&nbsp;";
+  housePickContainer.innerHTML = "&nbsp;";
 };

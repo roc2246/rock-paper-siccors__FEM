@@ -305,11 +305,14 @@ button {
 
 @media (max-width: 375px) {
   .pick {
-  margin-top: 4rem;
+    margin-top: 4rem;
     grid-template-columns: repeat(2, auto);
   }
 }
 
+.pick__your-pick {
+  grid-column: 1/2;
+}
 @media (max-width: 375px) {
   .pick__your-pick {
     grid-column: 1/2;
@@ -317,6 +320,19 @@ button {
 
     display: grid;
   }
+}
+
+.pick__your-pick--container {
+  display: flex;
+  justify-content: center;
+}
+
+.pick__your-pick--container > div{
+  height: auto;
+}
+
+.pick__house-pick {
+  grid-column: 3/4;
 }
 
 @media (max-width: 375px) {
@@ -328,34 +344,48 @@ button {
   }
 }
 
-.pick__your-pic--heading,
-.pick__house-pic--heading,
+.pick__house-pick--container {
+  display: flex;
+  justify-content: center;
+}
+
+.pick__house-pick--container > div{
+  height: auto;
+}
+
+
+.pick__your-pick--heading,
+.pick__house-pick--heading,
 .pick__outcome--heading {
   text-align: center;
   color: white;
 }
 
 @media (max-width: 375px) {
-  .pick__your-pic--heading,
-  .pick__house-pic--heading {
+  .pick__your-pick--heading,
+  .pick__house-pick--heading {
     grid-row: 2/3;
   }
 }
 
-.pick__your-pic--container > div,
-.pick__house-pic--container > div {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* .pick__house-pick--container{
+.pick__your-pick--container,
+.pick__house-pick--container {
   border-radius: 50%;
-  border-color: white;
   height: 10rem;
   width: 10rem;
-  color: white;
-} */
+  background-color: var(--radial-gradient-2);
+}
 
+@media (max-width: 375px) {
+  .pick__your-pick--container,
+  .pick__house-pick--container {
+    height: 5rem;
+    width: 5rem;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 .pick__outcome {
   margin-top: auto;
