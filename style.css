@@ -53,6 +53,12 @@ body {
   background-size: cover;
 }
 
+@media (max-width: 375px) {
+  body {
+    margin-right: 2rem;
+  }
+}
+
 button {
   cursor: pointer;
   height: 2.75rem;
@@ -74,6 +80,13 @@ button {
   border-color: var(--header-outline);
 }
 
+@media (max-width: 375px) {
+  .top{
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
 .top__logo-box {
   cursor: pointer;
   display: flex;
@@ -82,7 +95,7 @@ button {
 
 @media (max-width: 375px) {
   .top__logo-box > img {
-    width: 6rem;
+    width: 4rem;
   }
 }
 
@@ -99,7 +112,9 @@ button {
 }
 @media (max-width: 375px) {
   .top__score {
-    width: 6rem;
+    width: 3rem;
+    height: 2.75rem;
+    padding-top: .5rem;
   }
 }
 
@@ -109,19 +124,31 @@ button {
   color: rgb(4, 4, 180);
 }
 
+@media (max-width: 375px) {
+  .top__score--heading {
+    font-size: .75rem
+  }
+}
+
 .top__score--score {
   margin: 0;
   text-align: center;
   font-size: 3.5rem;
 }
 
+@media (max-width: 375px) {
+  .top__score--score {
+    font-size: 2rem
+  }
+}
+
 .game {
   display: flex;
   justify-content: center;
+  
 }
 
 .options {
-  justify-content: center;
   display: grid;
   margin-top: 4rem;
 
