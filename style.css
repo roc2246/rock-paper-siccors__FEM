@@ -325,10 +325,20 @@ button {
 .pick__your-pick--container {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .pick__your-pick--container > div{
-  height: auto;
+  position: absolute;
+  top: -1rem;
+}
+
+
+@media (max-width: 375pc) {
+  .pick__your-pick--container > div{
+    top: -.25rem;
+  }
+  
 }
 
 .pick__house-pick {
@@ -347,43 +357,57 @@ button {
 .pick__house-pick--container {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .pick__house-pick--container > div{
-  height: auto;
+  position: absolute;
+  top: -1rem;
 }
 
+@media (max-width: 375pc) {
+  .pick__house-pick--container > div{
+    top: -.25rem;
+  }
+  
+}
 
 .pick__your-pick--heading,
 .pick__house-pick--heading,
 .pick__outcome--heading {
   text-align: center;
   color: white;
+  margin-top: 0;
+  margin-bottom: 4rem;
 }
 
 @media (max-width: 375px) {
   .pick__your-pick--heading,
   .pick__house-pick--heading {
     grid-row: 2/3;
+
+    margin-top: 2rem;
+    margin-bottom: 0;
   }
 }
 
 .pick__your-pick--container,
 .pick__house-pick--container {
   border-radius: 50%;
-  height: 10rem;
-  width: 10rem;
+  height: calc(10rem + var(--choice-border-width));
+  width: calc(10rem + var(--choice-border-width));
   background-color: var(--radial-gradient-2);
+
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 375px) {
   .pick__your-pick--container,
   .pick__house-pick--container {
-    height: 5rem;
-    width: 5rem;
-
-    margin-left: auto;
-    margin-right: auto;
+    height: calc(5rem + var(--choice-border-width));
+    width: calc(5rem + var(--choice-border-width));
   }
 }
 
