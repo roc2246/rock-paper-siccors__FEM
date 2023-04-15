@@ -28,13 +28,13 @@
   --desktop: 1366px;
 
   --choice-border-width: 1.5rem;
-  --choice-dimensions: 10rem
+  --choice-dimensions: 9rem;
 }
 
 @media (max-width: 375px) {
   :root {
     --choice-border-width: 0.75rem;
-    --choice-dimensions: 5rem
+    --choice-dimensions: 5rem;
   }
 }
 
@@ -64,10 +64,10 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: 40rem;
+  max-width: 42rem;
   height: auto;
   margin: 2rem auto 0 auto;
-  padding: 2rem;
+  padding: 1rem;
 
   border: solid;
   border-radius: 1rem;
@@ -76,6 +76,8 @@ button {
 
 .top__logo-box {
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 375px) {
@@ -89,14 +91,10 @@ button {
 }
 
 .top__score {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
+  padding: 0.8rem;
   background-color: white;
   border-radius: 0.5rem;
-  width: 8.5rem;
+  width: 7rem;
   height: auto;
 }
 @media (max-width: 375px) {
@@ -106,8 +104,7 @@ button {
 }
 
 .top__score--heading {
-  margin-top: 0;
-  margin-bottom: 0rem;
+  margin: 0;
   text-align: center;
   color: rgb(4, 4, 180);
 }
@@ -115,21 +112,20 @@ button {
 .top__score--score {
   margin: 0;
   text-align: center;
-  font-size: 2.5rem;
-  font-weight: bolder;
+  font-size: 3.5rem;
 }
 
 .game {
-  max-width: 20rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 .options {
   justify-content: center;
   display: grid;
   margin-top: 4rem;
+
+  height: 28rem;
 
   /* Bonus Setting */
   /* grid-template-columns: repeat(9, auto);
@@ -140,6 +136,12 @@ button {
       auto
     )
     var(--choice-border-width); */
+}
+
+@media (max-width: 375px) {
+  .options {
+    height: auto;
+  }
 }
 
 .choice-box {
@@ -326,17 +328,15 @@ button {
   justify-content: center;
 }
 
-.pick__your-pick--container > div{
+.pick__your-pick--container > div {
   position: absolute;
   margin-top: 3rem;
 }
 
-
 @media (max-width: 375pc) {
-  .pick__your-pick--container > div{
+  .pick__your-pick--container > div {
     margin-top: -1rem;
   }
-  
 }
 
 .pick__house-pick {
@@ -357,7 +357,7 @@ button {
   justify-content: center;
 }
 
-.pick__house-pick--container > div{
+.pick__house-pick--container > div {
   position: absolute;
   margin-top: -1rem;
 }
@@ -439,7 +439,7 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  max-width: 95vw;
+  max-width: 99%;
   margin-top: 5rem;
 }
 
@@ -459,19 +459,61 @@ button {
 }
 
 .rules-modal__container {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  row-gap: 1rem;
+
   background-color: white;
   border-radius: 0.5rem;
   padding: 1rem;
 }
 
+@media (max-width: 375px) {
+  .rules-modal__container {
+    grid-template-columns: auto;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
 .rules-modal__container--heading {
   margin-top: 0;
   font-weight: 900;
+
+  grid-column: 1/2;
+
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-/* .rules-modal__container--image{
-  display: none;
-} */
+@media (max-width: 375px) {
+  .rules-modal__container--heading {
+    grid-column: 1/2;
+    text-align: center;
+  }
+}
+
+.rules-modal__container--close {
+  grid-column: 2/3;
+
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@media (max-width: 375px) {
+  .rules-modal__container--close {
+    grid-column: 1/2;
+    grid-row: 3;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+  }
+}
+
+.rules-modal__container--image {
+  width: 100%;
+  height: auto;
+}
 
 .rules-modal__container--bonus-image {
   display: none;
