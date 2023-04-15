@@ -516,6 +516,8 @@ button {
 }
 
 .rules-modal__container--bonus-image {
+  width: 100%;
+  height: auto;
   display: none;
 }
 

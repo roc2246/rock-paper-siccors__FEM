@@ -31,6 +31,9 @@ const closeRulesBtn = document.getElementsByClassName(
   "rules-modal__container--close"
 )[0];
 
+const rulesImage = document.getElementsByClassName("rules-modal__container--image")[0]
+const rulesImageBonus = document.getElementsByClassName("rules-modal__container--bonus-image")[0]
+
 const options = document.getElementsByClassName("options")[0];
 const choices = document.getElementsByClassName("choice-box");
 
@@ -270,10 +273,14 @@ logoContainer.onclick = () => {
   if (bonusLogo.style.display === "none" || bonusLogo.style.display === "") {
     regularLogo.style.display = "none";
     bonusLogo.style.display = "inline";
+    rulesImage.style.display = "none"
+    rulesImageBonus.style.display = "block"
     setGameType("bonus");
   } else {
     regularLogo.style.display = "inline";
     bonusLogo.style.display = "none";
+    rulesImage.style.display = "block"
+    rulesImageBonus.style.display = "none"
     setGameType("original");
   }
 };
