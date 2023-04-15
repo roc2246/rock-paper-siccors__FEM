@@ -28,11 +28,13 @@
   --desktop: 1366px;
 
   --choice-border-width: 1.5rem;
+  --choice-dimensions: 10rem
 }
 
 @media (max-width: 375px) {
   :root {
     --choice-border-width: 0.75rem;
+    --choice-dimensions: 5rem
   }
 }
 
@@ -151,8 +153,8 @@ button {
   border-image-outset: 0;
   border-image-repeat: round; */
 
-  height: 10rem;
-  width: 10rem;
+  height: var(--choice-dimensions);
+  width: var(--choice-dimensions);
   box-shadow: inset 0px 20px 0px -12px #d6d6d6;
 
   display: flex;
@@ -183,10 +185,6 @@ button {
 }
 
 @media (max-width: 375px) {
-  .choice-box {
-    height: 5rem;
-    width: 5rem;
-  }
   .choice-box > img {
     width: 2rem;
     height: auto;
@@ -297,6 +295,7 @@ button {
 }
 
 .pick {
+  position: relative;
   display: none;
   justify-content: center;
   gap: 2rem;
@@ -325,18 +324,17 @@ button {
 .pick__your-pick--container {
   display: flex;
   justify-content: center;
-  position: relative;
 }
 
 .pick__your-pick--container > div{
   position: absolute;
-  top: -1rem;
+  margin-top: 3rem;
 }
 
 
 @media (max-width: 375pc) {
   .pick__your-pick--container > div{
-    top: -.25rem;
+    margin-top: -1rem;
   }
   
 }
@@ -357,20 +355,19 @@ button {
 .pick__house-pick--container {
   display: flex;
   justify-content: center;
-  position: relative;
 }
 
 .pick__house-pick--container > div{
   position: absolute;
-  top: -1rem;
+  margin-top: -1rem;
 }
 
-@media (max-width: 375pc) {
+/* @media (max-width: 375px) {
   .pick__house-pick--container > div{
-    top: -.25rem;
+    margin-top: -10rem;
   }
   
-}
+} */
 
 .pick__your-pick--heading,
 .pick__house-pick--heading,
@@ -378,7 +375,7 @@ button {
   text-align: center;
   color: white;
   margin-top: 0;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 @media (max-width: 375px) {
@@ -394,10 +391,9 @@ button {
 .pick__your-pick--container,
 .pick__house-pick--container {
   border-radius: 50%;
-  height: calc(10rem + var(--choice-border-width));
-  width: calc(10rem + var(--choice-border-width));
+  height: 10rem;
+  width: 10rem;
   background-color: var(--radial-gradient-2);
-
 
   margin-left: auto;
   margin-right: auto;
@@ -406,8 +402,8 @@ button {
 @media (max-width: 375px) {
   .pick__your-pick--container,
   .pick__house-pick--container {
-    height: calc(5rem + var(--choice-border-width));
-    width: calc(5rem + var(--choice-border-width));
+    height: 5rem;
+    width: 5rem;
   }
 }
 
