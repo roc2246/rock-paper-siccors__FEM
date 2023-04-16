@@ -374,6 +374,7 @@ button {
 .pick__house-pick--container {
   display: flex;
   justify-content: center;
+  margin-top: -1rem;
 }
 
 .pick__house-pick--container > div {
