@@ -140,8 +140,7 @@ function setWinningPick(winner) {
   winner.style.position = "absolute";
   winner.style.padding = "5rem"
   winner.style.zIndex = "-2";
-// "-5.253rem"
-// -5rem
+
   winner.style.marginTop =  "-5.95rem"
 
   if(winner === housePickContainer){
