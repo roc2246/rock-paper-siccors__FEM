@@ -141,7 +141,7 @@ function setWinningPick(winner) {
   winner.style.padding = "5rem"
   winner.style.zIndex = "-2";
 
-  winner.style.marginTop =  "-5rem"
+  winner.style.marginTop =  "-6rem"
   winner.style.marginLeft =  "-5rem"
 }
 
