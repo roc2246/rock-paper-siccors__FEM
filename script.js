@@ -10,6 +10,8 @@ let houseChoice;
 const revealHousePick = 1000;
 const revealResult = 1500;
 
+const resultGridTempCol = "var(--choice-dimensions)"
+
 const bonusColLayout = "repeat(9, auto)";
 const bonusRowLayout = `var(--choice-border-width) repeat(3, auto) 
 var(--choice-border-width) repeat(3, auto) var(--choice-border-width) 
@@ -31,8 +33,12 @@ const closeRulesBtn = document.getElementsByClassName(
   "rules-modal__container--close"
 )[0];
 
-const rulesImage = document.getElementsByClassName("rules-modal__container--image")[0]
-const rulesImageBonus = document.getElementsByClassName("rules-modal__container--bonus-image")[0]
+const rulesImage = document.getElementsByClassName(
+  "rules-modal__container--image"
+)[0];
+const rulesImageBonus = document.getElementsByClassName(
+  "rules-modal__container--bonus-image"
+)[0];
 
 const options = document.getElementsByClassName("options")[0];
 const choices = document.getElementsByClassName("choice-box");
@@ -129,6 +135,16 @@ function setScore() {
   scoreContainer.innerHTML = score;
 }
 
+function setWinningPick(winner) {
+  winner.style.backgroundImage = "radial-gradient(25% 25% at 25%, var(--radial-gradient-1), var(--radial-gradient-2))"
+  winner.style.position = "absolute";
+  winner.style.padding = "5rem"
+  winner.style.zIndex = "-2";
+
+  winner.style.marginTop =  "-5rem"
+  winner.style.marginLeft =  "-5rem"
+}
+
 function getResults(pick) {
   options.style.display = "none";
   pickContainer.style.display = "grid";
@@ -139,8 +155,8 @@ function getResults(pick) {
   userChoice.onclick = () => {};
   houseChoice.onclick = () => {};
 
-  yourPick.innerHTML = ""
-  housePickContainer.innerHTML = ""
+  yourPick.innerHTML = "";
+  housePickContainer.innerHTML = "";
 
   yourPick.appendChild(userChoice);
 
@@ -152,6 +168,13 @@ function getResults(pick) {
     resultsContainer.style.display = "block";
     rules();
     setScore();
+
+    // For radial gradient over winner
+    if (resultMssg === "YOU WIN") {
+      setWinningPick(yourPick);
+    } else if (resultMssg === "YOU LOSE") {
+      setWinningPick(housePickContainer);
+    }
   }, revealResult);
 }
 
@@ -269,18 +292,30 @@ function setGameType(type) {
   }
 }
 
+function resetContainer(container) {
+  container.style.position = "static";
+  container.style.background = "none";
+  container.style.borderRadius = "50%";
+  container.style.padding = "0"
+  container.style.width = "var(--choice-dimensions)";
+  container.style.height = "var(--choice-dimensions)";
+  container.style.backgroundColor = "var(--radial-gradient-2)";
+  container.style.marginTop =  "-1rem"
+  container.style.marginLeft =  "auto"
+}
+
 logoContainer.onclick = () => {
   if (bonusLogo.style.display === "none" || bonusLogo.style.display === "") {
     regularLogo.style.display = "none";
     bonusLogo.style.display = "inline";
-    rulesImage.style.display = "none"
-    rulesImageBonus.style.display = "block"
+    rulesImage.style.display = "none";
+    rulesImageBonus.style.display = "block";
     setGameType("bonus");
   } else {
     regularLogo.style.display = "inline";
     bonusLogo.style.display = "none";
-    rulesImage.style.display = "block"
-    rulesImageBonus.style.display = "none"
+    rulesImage.style.display = "block";
+    rulesImageBonus.style.display = "none";
     setGameType("original");
   }
 };
@@ -309,6 +344,11 @@ Object.keys(choices).forEach((choice) => {
 
 playAgain.onclick = () => {
   resultMssg = " ";
+
+  // For radial gradient over winner
+  resetContainer(yourPick);
+  resetContainer(housePickContainer);
+
   options.style.display = "grid";
   pickContainer.style.display = "none";
   resultsContainer.style.display = "none";

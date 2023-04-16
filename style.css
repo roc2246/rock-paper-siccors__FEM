@@ -28,7 +28,7 @@
   --desktop: 1366px;
 
   --choice-border-width: 1.5rem;
-  --choice-dimensions: 9rem;
+  --choice-dimensions: 10rem;
 }
 
 @media (max-width: 375px) {
@@ -53,12 +53,6 @@ body {
   background-size: cover;
 }
 
-@media (max-width: 375px) {
-  body {
-    margin-right: 2rem;
-  }
-}
-
 button {
   cursor: pointer;
   height: 2.75rem;
@@ -81,7 +75,7 @@ button {
 }
 
 @media (max-width: 375px) {
-  .top{
+  .top {
     margin-left: 2rem;
     margin-right: 2rem;
   }
@@ -114,7 +108,7 @@ button {
   .top__score {
     width: 3rem;
     height: 2.75rem;
-    padding-top: .5rem;
+    padding-top: 0.5rem;
   }
 }
 
@@ -126,7 +120,7 @@ button {
 
 @media (max-width: 375px) {
   .top__score--heading {
-    font-size: .75rem
+    font-size: 0.75rem;
   }
 }
 
@@ -138,14 +132,13 @@ button {
 
 @media (max-width: 375px) {
   .top__score--score {
-    font-size: 2rem
+    font-size: 2rem;
   }
 }
 
 .game {
   display: flex;
   justify-content: center;
-  
 }
 
 .options {
@@ -327,14 +320,15 @@ button {
   position: relative;
   display: none;
   justify-content: center;
-  gap: 2rem;
-  grid-template-columns: repeat(3, auto);
+  gap: 4rem;
+  grid-template-columns: var(--choice-dimensions) auto var(--choice-dimensions);
+  margin-top: 4rem;
 }
 
 @media (max-width: 375px) {
   .pick {
-    margin-top: 4rem;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: var(--choice-dimensions) auto;
+    margin-left: 1.5rem;
   }
 }
 
@@ -357,10 +351,10 @@ button {
 
 .pick__your-pick--container > div {
   position: absolute;
-  margin-top: 3rem;
+  margin-top: -1rem;
 }
 
-@media (max-width: 375pc) {
+@media (max-width: 375px) {
   .pick__your-pick--container > div {
     margin-top: -1rem;
   }
@@ -389,17 +383,11 @@ button {
   margin-top: -1rem;
 }
 
-/* @media (max-width: 375px) {
-  .pick__house-pick--container > div{
-    margin-top: -10rem;
-  }
-  
-} */
-
 .pick__your-pick--heading,
 .pick__house-pick--heading,
 .pick__outcome--heading {
   text-align: center;
+  white-space: nowrap;
   color: white;
   margin-top: 0;
   margin-bottom: 3rem;
@@ -410,16 +398,16 @@ button {
   .pick__house-pick--heading {
     grid-row: 2/3;
 
-    margin-top: 2rem;
     margin-bottom: 0;
+    margin-top: auto;
   }
 }
 
 .pick__your-pick--container,
 .pick__house-pick--container {
   border-radius: 50%;
-  height: 10rem;
-  width: 10rem;
+  height: var(--choice-dimensions);
+  width: var(--choice-dimensions);
   background-color: var(--radial-gradient-2);
 
   margin-left: auto;
@@ -429,8 +417,10 @@ button {
 @media (max-width: 375px) {
   .pick__your-pick--container,
   .pick__house-pick--container {
-    height: 5rem;
-    width: 5rem;
+    height: var(--choice-dimensions);
+    width: var(--choice-dimensions);
+
+    margin-bottom: 2rem;
   }
 }
 
@@ -466,7 +456,7 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  max-width: 99%;
+  width: 98%;
   margin-top: 5rem;
 }
 
@@ -500,7 +490,8 @@ button {
     grid-template-columns: auto;
     width: 100vw;
     height: 100vh;
-    padding-left: 0;
+    padding: 0;
+    border-radius: 0;
   }
 }
 
@@ -549,12 +540,12 @@ button {
   display: none;
 }
 
-@media (max-width:375px) {
+@media (max-width: 375px) {
   .rules-modal__container--image,
-  .rules-modal__container--bonus-image{
-width: 80%;
-margin-left: auto;
-margin-right: auto;
+  .rules-modal__container--bonus-image {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
