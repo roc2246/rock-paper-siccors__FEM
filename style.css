@@ -351,11 +351,11 @@ button {
   margin-top: -1rem;
 }
 
-@media (max-width: 375px) {
+/* @media (max-width: 375px) {
   .pick__your-pick--container > div {
     margin-top: -1rem;
   }
-}
+} */
 
 .pick__house-pick {
   grid-column: 3/4;
