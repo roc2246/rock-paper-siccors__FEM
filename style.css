@@ -347,6 +347,7 @@ button {
 .pick__your-pick--container {
   display: flex;
   justify-content: center;
+  margin-top: -1rem;
 }
 
 .pick__your-pick--container > div {
@@ -424,15 +425,27 @@ button {
   }
 }
 
-.winner {
+.winner-house {
   margin-left: -5rem !important;
+  margin-top: -6rem !important;
 }
 
 @media (max-width: 375px) {
-  .winner {
+  .winner-house {
     margin-left: -3.75rem !important;
   }
 }
+
+.winner-you{
+margin-left: -5rem !important;
+margin-top: -6rem !important;
+}
+/* 
+@media (max-width: 375px) {
+  .winner-you {
+    margin-left: -3.75rem !important;
+  }
+} */
 
 .pick__outcome {
   margin-top: auto;

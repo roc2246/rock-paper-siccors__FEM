@@ -142,13 +142,11 @@ function setWinningPick(winner) {
   winner.style.padding = "5rem";
   winner.style.zIndex = "-2";
 
-  winner.style.marginTop = "-5.95rem";
 
   if (winner === housePickContainer) {
-    winner.style.marginLeft = "-3.75rem";
-    winner.classList.add("winner");
+    winner.classList.add("winner-house");
   } else {
-    winner.style.marginLeft = "-5rem";
+    winner.classList.add("winner-you")
   }
 }
 
@@ -311,7 +309,11 @@ function resetContainer(container) {
   container.style.marginLeft = "auto";
   container.style.zIndex = "0";
 
-  container.classList.remove("winner");
+  if(container === housePickContainer){
+    container.classList.remove("winner-house");
+  } else{
+    container.classList.remove("winner-you")
+  }
 }
 
 logoContainer.onclick = () => {
