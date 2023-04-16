@@ -588,5 +588,6 @@ margin-top: -6rem !important;
 @media (max-width: 375px) {
   .bottom {
     justify-content: center;
+    margin-left: .5rem;
   }
 }
