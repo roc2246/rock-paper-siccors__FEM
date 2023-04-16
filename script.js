@@ -137,7 +137,7 @@ function setScore() {
 
 function setWinningPick(winner) {
   winner.style.backgroundImage =
-    "radial-gradient(25% 25% at 25%, var(--radial-gradient-1), var(--radial-gradient-2))";
+    "radial-gradient(circle, #1f2a4a, #253050 5%, #2a3352 5%)";
   winner.style.position = "absolute";
   winner.style.padding = "5rem";
   winner.style.zIndex = "-2";
