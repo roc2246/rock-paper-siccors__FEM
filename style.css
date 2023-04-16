@@ -424,6 +424,16 @@ button {
   }
 }
 
+.winner {
+  margin-left: -5rem !important;
+}
+
+@media (max-width: 375px) {
+  .winner {
+    margin-left: -3.75rem !important;
+  }
+}
+
 .pick__outcome {
   margin-top: auto;
   margin-bottom: auto;

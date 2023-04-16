@@ -140,9 +140,17 @@ function setWinningPick(winner) {
   winner.style.position = "absolute";
   winner.style.padding = "5rem"
   winner.style.zIndex = "-2";
+// "-5.253rem"
+// -5rem
+  winner.style.marginTop =  "-5.95rem"
 
-  winner.style.marginTop =  "-6rem"
-  winner.style.marginLeft =  "-5rem"
+  if(winner === housePickContainer){
+    winner.style.marginLeft =  "-3.75rem"
+  winner.classList.add("winner")
+  } else {
+    winner.style.marginLeft =  "-5rem"
+  }
+
 }
 
 function getResults(pick) {
@@ -302,6 +310,8 @@ function resetContainer(container) {
   container.style.backgroundColor = "var(--radial-gradient-2)";
   container.style.marginTop =  "-1rem"
   container.style.marginLeft =  "auto"
+
+  container.classList.remove("winner")
 }
 
 logoContainer.onclick = () => {
