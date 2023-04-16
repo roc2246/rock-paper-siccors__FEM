@@ -24,9 +24,6 @@
   --light: 600;
   --bold: 700;
 
-  --mobile: 375px;
-  --desktop: 1366px;
-
   --choice-border-width: 1.5rem;
   --choice-dimensions: 10rem;
 }
@@ -483,6 +480,13 @@ margin-top: -6rem !important;
   margin-top: 5rem;
 }
 
+@media (max-width: 375px) {
+  .bottom {
+    justify-content: center;
+    margin-left: 1rem;
+  }
+}
+
 .rules-modal {
   display: none;
   justify-content: center;
@@ -585,9 +589,4 @@ margin-top: -6rem !important;
   font-size: 1rem;
 }
 
-@media (max-width: 375px) {
-  .bottom {
-    justify-content: center;
-    margin-left: .5rem;
-  }
-}
+
