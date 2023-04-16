@@ -142,11 +142,10 @@ function setWinningPick(winner) {
   winner.style.padding = "5rem";
   winner.style.zIndex = "-2";
 
-
   if (winner === housePickContainer) {
     winner.classList.add("winner-house");
   } else {
-    winner.classList.add("winner-you")
+    winner.classList.add("winner-you");
   }
 }
 
@@ -309,26 +308,28 @@ function resetContainer(container) {
   container.style.marginLeft = "auto";
   container.style.zIndex = "0";
 
-  if(container === housePickContainer){
+  if (container === housePickContainer) {
     container.classList.remove("winner-house");
-  } else{
-    container.classList.remove("winner-you")
+  } else {
+    container.classList.remove("winner-you");
   }
 }
 
 logoContainer.onclick = () => {
-  if (bonusLogo.style.display === "none" || bonusLogo.style.display === "") {
-    regularLogo.style.display = "none";
-    bonusLogo.style.display = "inline";
-    rulesImage.style.display = "none";
-    rulesImageBonus.style.display = "block";
-    setGameType("bonus");
-  } else {
-    regularLogo.style.display = "inline";
-    bonusLogo.style.display = "none";
-    rulesImage.style.display = "block";
-    rulesImageBonus.style.display = "none";
-    setGameType("original");
+  if (pickContainer.style.display !== "grid") {
+    if (bonusLogo.style.display === "none" || bonusLogo.style.display === "") {
+      regularLogo.style.display = "none";
+      bonusLogo.style.display = "inline";
+      rulesImage.style.display = "none";
+      rulesImageBonus.style.display = "block";
+      setGameType("bonus");
+    } else {
+      regularLogo.style.display = "inline";
+      bonusLogo.style.display = "none";
+      rulesImage.style.display = "block";
+      rulesImageBonus.style.display = "none";
+      setGameType("original");
+    }
   }
 };
 
