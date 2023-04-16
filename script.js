@@ -10,7 +10,7 @@ let houseChoice;
 const revealHousePick = 1000;
 const revealResult = 1500;
 
-const resultGridTempCol = "var(--choice-dimensions)"
+const resultGridTempCol = "var(--choice-dimensions)";
 
 const bonusColLayout = "repeat(9, auto)";
 const bonusRowLayout = `var(--choice-border-width) repeat(3, auto) 
@@ -136,20 +136,20 @@ function setScore() {
 }
 
 function setWinningPick(winner) {
-  winner.style.backgroundImage = "radial-gradient(25% 25% at 25%, var(--radial-gradient-1), var(--radial-gradient-2))"
+  winner.style.backgroundImage =
+    "radial-gradient(25% 25% at 25%, var(--radial-gradient-1), var(--radial-gradient-2))";
   winner.style.position = "absolute";
-  winner.style.padding = "5rem"
+  winner.style.padding = "5rem";
   winner.style.zIndex = "-2";
 
-  winner.style.marginTop =  "-5.95rem"
+  winner.style.marginTop = "-5.95rem";
 
-  if(winner === housePickContainer){
-    winner.style.marginLeft =  "-3.75rem"
-  winner.classList.add("winner")
+  if (winner === housePickContainer) {
+    winner.style.marginLeft = "-3.75rem";
+    winner.classList.add("winner");
   } else {
-    winner.style.marginLeft =  "-5rem"
+    winner.style.marginLeft = "-5rem";
   }
-
 }
 
 function getResults(pick) {
@@ -303,14 +303,15 @@ function resetContainer(container) {
   container.style.position = "static";
   container.style.background = "none";
   container.style.borderRadius = "50%";
-  container.style.padding = "0"
+  container.style.padding = "0";
   container.style.width = "var(--choice-dimensions)";
   container.style.height = "var(--choice-dimensions)";
   container.style.backgroundColor = "var(--radial-gradient-2)";
-  container.style.marginTop =  "-1rem"
-  container.style.marginLeft =  "auto"
+  container.style.marginTop = "-1rem";
+  container.style.marginLeft = "auto";
+  container.style.zIndex = "0";
 
-  container.classList.remove("winner")
+  container.classList.remove("winner");
 }
 
 logoContainer.onclick = () => {
